@@ -56,7 +56,7 @@ endif
 
 BIN := $(BDIR)/$(BINBASE)
 INSTILIB=$(BINBASE).a
-HTSLIBPP_DIR:=htslibpp
+HTSLIBPP_DIR:=/Users/jkpickrell/Downloads/htslibpp
 HTSLIBPP:=$(HTSLIBPP_DIR)/libhtspp.a
 
 
@@ -87,9 +87,9 @@ test: CXXFLAGS += -O0 -ggdb -DDEBUG
 CXX := g++
 # alternative: STDCXX:= -std=gnu++11
 STDCXX := -std=c++11
-CXXFLAGS += -Wall -Wextra -mpopcnt -Ihtslibpp $(STDCXX)
-BOOSTLIB := -lboost_iostreams -lboost_program_options #alternatively: /opt/boost/boost-1.54.0-intel/lib/libboost_iostreams.a
-LIBS += -lgsl -lgslcblas -lhts -lbz2 $(BOOSTLIB) -lm -lstdc++ -lz -lhtspp
+CXXFLAGS += -Wall -Wextra -I/Users/jkpickrell/Downloads/htslibpp -I/opt/local/include -mpopcnt -Ihtslibpp $(STDCXX)
+BOOSTLIB := -lboost_iostreams-mt -lboost_program_options-mt #alternatively: /opt/boost/boost-1.54.0-intel/lib/libboost_iostreams.a
+LIBS += -L/opt/local/lib -L/Users/jkpickrell/Downloads/htslibpp -lgsl -lgslcblas -lhts -lbz2 $(BOOSTLIB) -lm -lstdc++ -lz -lhtspp
 
 # nvcc
 ifndef NCUDA
